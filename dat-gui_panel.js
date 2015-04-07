@@ -5,7 +5,7 @@ Q3D.gui = {
   parameters: {
     lyr: [],
     cp: {
-      c: "#ffffff",
+      c: "#32AD88",
       d: 0,
       o: 1,
       l: false
@@ -66,7 +66,7 @@ Q3D.gui = {
     };
 
     // Min/Max value for the plane
-    var zMin = (project.layers[0].type == Q3D.LayerType.DEM) ? project.layers[0].stats.min - 500 : 0,
+    var zMin = (project.layers[0].type == Q3D.LayerType.DEM) ? project.layers[0].stats.min + 0 : 1,
         zMax = (project.layers[0].type == Q3D.LayerType.DEM) ? project.layers[0].stats.max + 1000 : 9000;
     parameters.cp.d = zMin;
 
@@ -80,7 +80,7 @@ Q3D.gui = {
     });
 
     // Plane height
-    folder.add(parameters.cp, 'd').min(zMin).max(zMax).name('Plane height').onChange(function (value) {
+    folder.add(parameters.cp, 'd').min(zMin).max(zMax).name('Sea Level Rise').onChange(function (value) {
       if (customPlane === undefined) addPlane(parameters.cp.c);
       customPlane.position.z = (value + project.zShift) * project.zScale;
     });
